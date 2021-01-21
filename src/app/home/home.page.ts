@@ -12,6 +12,7 @@ export class HomePage {
   job:any;
 
   constructor(private jobService: JobService, private router: Router) {
+
     this.loadAllJobs();
   }
 
@@ -23,9 +24,13 @@ export class HomePage {
       })
   }
   
-  viewJobInfo(id){
-    this.jobService.getOne(id);
-    this.router.navigate(["/job-info"]);
+  viewJobInfo(job){
+    this.jobService.getOne(job);
+    //this.router.navigate(["/job-info"]);
+    
+    this.router.navigateByUrl('/job-info', { state: job});
+    
+  
   }
 
 }

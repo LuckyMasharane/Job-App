@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { JobService } from '../job.service';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +9,23 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  job:any;
+
+  constructor(private jobService: JobService, private router: Router) {
+    this.loadAllJobs();
+  }
+
+  loadAllJobs(){
+      this.jobService.getAllJobs().subscribe(jobs =>{
+        this.job = jobs
+        console.log(this.job);
+        
+      })
+  }
+  
+  viewJobInfo(id){
+    this.jobService.getOne(id);
+    this.router.navigate(["/job-info"]);
+  }
 
 }

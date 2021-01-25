@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="warning">
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
@@ -15,7 +15,7 @@
       </ion-item>
       <ion-card-title>{{job.title}} - {{job.type}}</ion-card-title>
       <ion-label>{{job.company}}</ion-label>
-      <ion-card-subtitle>{{job.created_at}}</ion-card-subtitle>
+      <ion-card-subtitle>{{job.created_at | date }}</ion-card-subtitle>
     </ion-card-header>
   
     <ion-card-content>
